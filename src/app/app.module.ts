@@ -1,3 +1,4 @@
+import { buildSpecificModules } from './build-specifics/index';
 import { environment } from './../environments/environment.prod';
 import { FooterComponent } from './components/footer/footer.component';
 import { TodosModule } from './todos/todos.module';
@@ -19,10 +20,7 @@ import { appReducers } from './app.reducer';
     TodosModule,
     StoreModule.forRoot(appReducers),
     ReactiveFormsModule,
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
-    }),
+    ...buildSpecificModules,
   ],
   providers: [],
   bootstrap: [AppComponent],
