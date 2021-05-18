@@ -1,4 +1,4 @@
-import { environment } from './../environments/environment';
+import { environment } from './../environments/environment.prod';
 import { FooterComponent } from './components/footer/footer.component';
 import { TodosModule } from './todos/todos.module';
 import { NgModule } from '@angular/core';
@@ -19,7 +19,10 @@ import { appReducers } from './app.reducer';
     TodosModule,
     StoreModule.forRoot(appReducers),
     ReactiveFormsModule,
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
